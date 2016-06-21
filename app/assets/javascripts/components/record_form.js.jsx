@@ -31,6 +31,18 @@ var RecordForm = React.createClass({
           }.bind(this)
         });
   	},
+    componentDidMount: function(){
+      console.log("despues de ser montado")
+      console.log(this.props.setRecord())
+    },
+    componentWillMount: function(){
+      console.log("antes de ser montado")
+      console.log(this.props.setRecord())
+    },
+    componentWillReceiveProps: function(){
+      console.log("recibiendo nuevas props")
+      console.log(this.props.setRecord())
+    },
     render: function() {
         return (
             <div className="row">

@@ -11,15 +11,20 @@ var Record = React.createClass({
           }.bind(this)
         });
     },
+    handleSetRecord: function(){
+      // this.props.setRecord(this.props.record)
+      alert("@todo: id:" +this.props.record.id)
+    },
     render: function() {
         return (
             <tr>
 		        <td>{this.props.record.title}</td>
 		        <td>{this.props.record.date}</td>
-                <td>{amountFormat(this.props.record.amount)}</td>
+            <td>{amountFormat(this.props.record.amount)}</td>
 		        <td>
-                    <a href="#" onClick={this.handleDelete}>Delete</a>
-                </td>
+              <a href="#" onClick={this.handleSetRecord}>Edit</a>&nbsp;|&nbsp;
+              <a href="#" onClick={this.handleDelete}>Delete</a>  
+            </td>
 		      </tr>
         );
     }

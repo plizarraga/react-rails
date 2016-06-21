@@ -12,8 +12,11 @@ var Records = React.createClass({
 	},
 	createRecord: function(record){
 		return (
-				<Record key={record.id} record={record} handleDeleteRecord={this.deleteRecord}/>
+				<Record key={record.id} record={record} handleDeleteRecord={this.deleteRecord} setRecord={this.setRecord}/>
 				);
+	},
+	setRecord: function(record){
+		return record;
 	},
   addRecord: function(record) {
     allRecords = React.addons.update(this.state.records, { $push: [record] })
@@ -33,7 +36,7 @@ var Records = React.createClass({
       return prev + parseFloat(curr.amount);
     }), 0);
   },
-   debits: function() {
+  debits: function() {
     var debits;
     debits = this.state.records.filter(function(val) {
       return val.amount < 0;
@@ -54,7 +57,7 @@ var Records = React.createClass({
 					<AmountBox title="Debit" amount={this.debits()}/>
 					<AmountBox title="Balance" amount={this.balance()}/>
 				</div>
-				<RecordForm handleNewRecord={this.addRecord}/>
+				<RecordForm handleNewRecord={this.addRecord} setRecord={this.setRecord}/>
 				<table className="bordered">
 					<thead>
 						<tr>
